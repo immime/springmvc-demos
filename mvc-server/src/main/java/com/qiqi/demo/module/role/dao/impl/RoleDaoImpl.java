@@ -2,21 +2,19 @@ package com.qiqi.demo.module.role.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.qiqi.demo.module.role.dao.IRoleDao;
-import com.qiqi.demo.pager.DataTable;
-import com.qiqi.demo.pager.DataTableRequest;
+import com.qiqi.demo.pager.EntityResultSet;
+import com.qiqi.demo.pager.PagingCriteria;
 import com.qiqi.demo.pojo.Role;
 
 /**
@@ -89,21 +87,10 @@ public class RoleDaoImpl implements IRoleDao {
 	}
 
 	@Override
-	public DataTable<Role> queryByPage(DataTableRequest dtReq) {
+	public EntityResultSet<Role> query(PagingCriteria criteria) {
 		// TODO Auto-generated method stub
-		DataTable<Role> dataTable = new DataTable<Role>(dtReq);
-		List<Role> data = new ArrayList<Role>();
-		Integer pageNumber = 0;
-		String searchValue = dtReq.getSSearch();
-		
-		String sqlSelect = "SELECT * FROM `t_role` t";
-		StringBuilder builder = new StringBuilder(sqlSelect);
-		if(StringUtils.isNotEmpty(searchValue)) {
-			
-		}
-		
-
 		return null;
 	}
+	
 
 }

@@ -2,8 +2,9 @@ package com.qiqi.demo.module.role.dao;
 
 import java.util.List;
 
-import com.qiqi.demo.pager.DataTable;
-import com.qiqi.demo.pager.DataTableRequest;
+import com.qiqi.demo.datatables.TableParam;
+import com.qiqi.demo.pager.PagingCriteria;
+import com.qiqi.demo.pager.EntityResultSet;
 import com.qiqi.demo.pojo.Role;
 
 /**
@@ -53,5 +54,5 @@ public interface IRoleDao {
 	 * @param pager
 	 * @return
 	 */
-	DataTable<Role> queryByPage(DataTableRequest dtReq);
+	EntityResultSet<Role> query(@TableParam PagingCriteria criteria);
 }
