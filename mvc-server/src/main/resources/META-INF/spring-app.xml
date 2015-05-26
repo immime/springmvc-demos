@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 静态资源映射 -->
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <!-- 注册mapping,class信息等... -->
+    <mvc:annotation-driven />
+    
+    <!-- 扫描annotation -->
+    <context:component-scan base-package="com.qiqi.demo" />
+
+    <!-- 多视图解析 .json .xml -->
+    <bean
+        class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="1" />
+        <!-- 用于开启 /userinfo/123?format=json 的支持 默认是true -->
+        <property name="favorParameter" value="false" />
+        <!-- 用于关闭 /userinfo/123.json 的支持 默认是true -->
+        <property name="favorPathExtension" value="true" />
+        <!-- 设置为true以忽略对Accept Header的支持 -->
+        <property name="ignoreAcceptHeader" value="true" />
+        <!-- 在没有扩展名时即: "/user/1" 时的默认展现形式 -->
+        <property name="defaultContentType" value="text/html" />
+        <!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
+        <property name="mediaTypes">
+            <map>
+                <entry key="json" value="application/json" />
+                <entry key="xml" value="application/xml" />
+            </map>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <ref bean="jsonView" />
+                <!-- <ref bean="xmlViewer" /> -->
+            </list>
+        </property>
+    </bean>
+
+    <bean name="jsonView"
+        class="com.alibaba.fastjson.support.spring.FastJsonJsonView">
+        <property name="charset" value="UTF-8" />
+    </bean>
+
+    <!-- import configs -->
+    <import resource="classpath:META-INF/spring/db/spring-db.xml" />
+
+</beans>
