@@ -186,6 +186,6 @@
         <!-- github.com/jirutka spring-rest-exception-handler -->
         <!-- <dependency> <groupId>cz.jirutka.spring</groupId> <artifactId>spring-rest-exception-handler</artifactId> 
             <version>1.0.3</version> </dependency> -->
-
+        
     </dependencies>
 </project>
