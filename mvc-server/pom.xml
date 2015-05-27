@@ -153,7 +153,7 @@
             <version>5.1.30</version>
         </dependency>
 
-        <!-- druid -->
+        <!-- druid connection pool-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
@@ -178,10 +178,21 @@
 
         <!-- json support -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.5</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.3.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+        <!-- //json support -->
 
         <!-- github.com/jirutka spring-rest-exception-handler -->
         <!-- <dependency> <groupId>cz.jirutka.spring</groupId> <artifactId>spring-rest-exception-handler</artifactId> 

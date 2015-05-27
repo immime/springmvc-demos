@@ -2,6 +2,7 @@ package com.qiqi.demo.module.role.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,9 +13,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.qiqi.demo.datatables.DataTablesResultSet;
 import com.qiqi.demo.module.role.dao.IRoleDao;
 import com.qiqi.demo.pager.EntityResultSet;
 import com.qiqi.demo.pager.PagingCriteria;
+import com.qiqi.demo.pager.SortField;
+import com.qiqi.demo.pager.WebResultSet;
 import com.qiqi.demo.pojo.Role;
 
 /**
@@ -89,7 +93,32 @@ public class RoleDaoImpl implements IRoleDao {
 	@Override
 	public EntityResultSet<Role> query(PagingCriteria criteria) {
 		// TODO Auto-generated method stub
-		return null;
+		EntityResultSet<Role> sets = new EntityResultSet<Role>();
+		List<Role> roles = new ArrayList<Role>();
+		
+		Integer displayStart = criteria.getDisplayStart();
+		Integer displaySize = criteria.getDisplaySize();
+		List<SortField> sortFields = criteria.getSortFields();
+		Integer pageNumber = criteria.getPageNumber();
+		
+		String select = "SELECT * FROM `t_role` t";
+		StringBuilder sql = new StringBuilder(select);
+		StringBuilder where = new StringBuilder(" WHERE 1=1");;
+		
+		if(CollectionUtils.isNotEmpty(sortFields)) {
+			StringBuilder sort = new StringBuilder(" SORT BY ");
+			for (SortField sf : sortFields) {
+				sort.append(sf.getField())
+				   .append(" ")
+				   .append(sf.getDirection())
+				   .append(",");
+			}
+			sort.deleteCharAt(sort.length() - 1);
+			sql.append(sort);
+		}
+		System.out.println(sql);
+		
+		return sets;
 	}
 	
 

@@ -19,7 +19,6 @@ public class RoleServiceImpl implements IRoleService {
 
 	@Override
 	public EntityResultSet<Role> query(PagingCriteria criteria) {
-		// TODO Auto-generated method stub
 		return dao.query(criteria);
 	}
 

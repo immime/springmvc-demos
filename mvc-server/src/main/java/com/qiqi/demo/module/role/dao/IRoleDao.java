@@ -54,5 +54,5 @@ public interface IRoleDao {
 	 * @param pager
 	 * @return
 	 */
-	EntityResultSet<Role> query(@TableParam PagingCriteria criteria);
+	EntityResultSet<Role> query(PagingCriteria criteria);
 }
