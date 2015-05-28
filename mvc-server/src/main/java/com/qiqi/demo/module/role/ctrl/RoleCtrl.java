@@ -47,8 +47,6 @@ public class RoleCtrl {
 	@RequestMapping(value = "/list")
 	public WebResultSet<Role> list(@RequestBody PagingCriteria criteria) {
 		EntityResultSet<Role> roles = this.service.query(criteria);
-		logger.debug("user/list");
-		logger.debug(System.getProperty("user.dir"));
 		return DataTableUtils.getWebResultSet(criteria, roles);
 	}
 

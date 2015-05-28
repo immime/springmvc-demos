@@ -14,31 +14,31 @@ import com.qiqi.demo.pager.WebResultSet;
  * @param <T>
  */
 public class DataTablesResultSet<T> implements WebResultSet<T> {
-	private final Integer sEcho;
-	private final Long iTotalRecords;
-	private final Long iTotalDisplayRecords;
-	private final List<T> aaData;
+	private final Integer draw;
+	private final Long recordsTotal;
+	private final Long recordsFiltered;
+	private final List<T> data;
 
 	public DataTablesResultSet(PagingCriteria pc, EntityResultSet<T> rs) {
-		this.sEcho = pc.getPageNumber();
-		this.aaData = rs.getRows();
-		this.iTotalRecords = rs.getTotalRecords();
-		this.iTotalDisplayRecords = rs.getTotalRecords();
+		this.draw = 0; // TODO draw from client ?....
+		this.data = rs.getRows();
+		this.recordsTotal = rs.getTotalRecords();
+		this.recordsFiltered = rs.getTotalDisplayRecords();
 	}
 
 	public Integer getsEcho() {
-		return sEcho;
+		return draw;
 	}
 
 	public Long getiTotalRecords() {
-		return iTotalRecords;
+		return recordsTotal;
 	}
 
 	public Long getiTotalDisplayRecords() {
-		return iTotalDisplayRecords;
+		return recordsFiltered;
 	}
 
 	public List<T> getAaData() {
-		return Collections.unmodifiableList(aaData);
+		return Collections.unmodifiableList(data);
 	}
 }
