@@ -14,7 +14,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.qiqi.demo.module.role.dao.IRoleDao;
-import com.qiqi.demo.pager.EntityResultSet;
+import com.qiqi.demo.pager.PageResultSet;
 import com.qiqi.demo.pager.PageSqlQueryer;
 import com.qiqi.demo.pager.PagingCriteria;
 import com.qiqi.demo.pager.SearchCondition;
@@ -85,7 +85,7 @@ public class RoleDaoImpl implements IRoleDao {
 	}
 
 	@Override
-	public EntityResultSet<Role> query(PagingCriteria criteria) {
+	public PageResultSet<Role> query(PagingCriteria criteria) {
 		SearchCondition searchCondition = criteria.getSearchCondition();
 		List<SortField> sortFields = criteria.getSortFields();
 
@@ -137,7 +137,7 @@ public class RoleDaoImpl implements IRoleDao {
 		sql.append(" LIMIT ").append(psq.getLimitStartIndex()).append(", ")
 				.append(psq.getLimitOffset());
 		
-		EntityResultSet<Role> sets = new EntityResultSet<Role>();
+		PageResultSet<Role> sets = new PageResultSet<Role>();
 		List<Role> rows = new ArrayList<Role>();
 		Integer iTotalRecords = 0;
 		Integer iTotalDisplayRecords = 0;

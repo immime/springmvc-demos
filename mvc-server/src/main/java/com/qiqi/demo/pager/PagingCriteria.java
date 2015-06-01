@@ -3,8 +3,6 @@ package com.qiqi.demo.pager;
 import java.io.Serializable;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
 /**
  * 分页参数封装
  * 
@@ -17,14 +15,10 @@ public class PagingCriteria implements Serializable {
 	 * default serial version ID
 	 */
 	private static final long serialVersionUID = 1L;
-	@JsonView
 	private Integer displayStart;
-	@JsonView
 	private Integer displaySize;
-	@JsonView
 	private List<SortField> sortFields;
 	private SearchCondition searchCondition;
-	@JsonView
 	private Integer pageNumber;
 	
 	public Integer getDisplayStart() {

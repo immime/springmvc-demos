@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qiqi.demo.datatables.DataTableUtils;
+import com.qiqi.demo.datatables.DataTablesCriteria;
 import com.qiqi.demo.module.role.service.IRoleService;
-import com.qiqi.demo.pager.EntityResultSet;
+import com.qiqi.demo.pager.PageResultSet;
 import com.qiqi.demo.pager.PagingCriteria;
 import com.qiqi.demo.pager.WebResultSet;
 import com.qiqi.demo.pojo.Role;
@@ -46,8 +47,14 @@ public class RoleCtrl {
 
 	@RequestMapping(value = "/list")
 	public WebResultSet<Role> list(@RequestBody PagingCriteria criteria) {
-		EntityResultSet<Role> roles = this.service.query(criteria);
+		PageResultSet<Role> roles = this.service.query(criteria);
 		return DataTableUtils.getWebResultSet(criteria, roles);
+	}
+	
+	@RequestMapping(value = "/datatables")
+	public WebResultSet<Role> datatables(@RequestBody DataTablesCriteria table) {
+		WebResultSet<Role> roles = this.service.query(table);
+		return roles;
 	}
 
 }

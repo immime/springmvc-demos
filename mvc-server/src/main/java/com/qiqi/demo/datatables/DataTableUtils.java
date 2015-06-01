@@ -1,7 +1,7 @@
 package com.qiqi.demo.datatables;
 
 import com.qiqi.demo.pager.PagingCriteria;
-import com.qiqi.demo.pager.EntityResultSet;
+import com.qiqi.demo.pager.PageResultSet;
 import com.qiqi.demo.pager.WebResultSet;
 
 /**
@@ -19,8 +19,18 @@ public class DataTableUtils {
 	 * @return
 	 */
 	public static <T> WebResultSet<T> getWebResultSet(
-			PagingCriteria pc, EntityResultSet<T> rs) {
+			PagingCriteria pc, PageResultSet<T> rs) {
 		return new DataTablesResultSet<T>(pc, rs);
+	}
+
+	/**
+	 * 将datatables查询参数转换为通用的分页查询参数
+	 * @param table
+	 * @return
+	 */
+	public static PagingCriteria parseReqParameter(DataTablesCriteria table) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

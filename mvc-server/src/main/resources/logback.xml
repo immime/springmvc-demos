@@ -132,7 +132,7 @@
     </appender>
     <!-- 为单独的包配置日志级别，若root的级别大于此级别， 此处级别也会输出 应用场景：生产环境一般不会将日志级别设置为trace或debug，但是为详细的记录SQL语句的情况， 
         可将hibernate的级别设置为debug，如此一来，日志文件中就会出现hibernate的debug级别日志， 而其它包则会按root的级别输出日志 -->
-    <logger name="org.springframework.web" level="ERROR" />
+    <logger name="org.springframework.web" level="DEBUG" />
     <logger name="org.springframework.jdbc.core.JdbcTemplate" level="DEBUG" />
     <logger name="com.qiqi.demo" level="DEBUG" />
 

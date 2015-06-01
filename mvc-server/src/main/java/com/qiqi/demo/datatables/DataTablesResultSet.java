@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.qiqi.demo.pager.PagingCriteria;
-import com.qiqi.demo.pager.EntityResultSet;
+import com.qiqi.demo.pager.PageResultSet;
 import com.qiqi.demo.pager.WebResultSet;
 
 /**
@@ -19,7 +19,7 @@ public class DataTablesResultSet<T> implements WebResultSet<T> {
 	private final Long recordsFiltered;
 	private final List<T> data;
 
-	public DataTablesResultSet(PagingCriteria pc, EntityResultSet<T> rs) {
+	public DataTablesResultSet(PagingCriteria pc, PageResultSet<T> rs) {
 		this.draw = 0; // TODO draw from client ?....
 		this.data = rs.getRows();
 		this.recordsTotal = rs.getTotalRecords();
